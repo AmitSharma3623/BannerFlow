@@ -20,22 +20,32 @@ namespace BannerFlowApi.Controllers
             _banner = BannerService;
         }
 
-        // GET api/student/id
+        // GET api/banner/id
         public HttpResponseMessage Get(int id)
         {
 
-            var student = _banner.Get(id);
-            if (student != null)
-                return Request.CreateResponse(HttpStatusCode.OK, student);
-            return Request.CreateErrorResponse(HttpStatusCode.NotFound, "Student not found for provided id.");
+            var banner = _banner.Get(id);
+            if (banner != null)
+                return Request.CreateResponse(HttpStatusCode.OK, banner);
+            return Request.CreateErrorResponse(HttpStatusCode.NotFound, "Banner not found for id.");
         }
 
+        //eample: api/bannerflow/GetHtml?id=1
+        [Route("api/bannerflow/GetHtml")]
+        public HttpResponseMessage GetHtml([FromUri] int id)
+        {
+
+            var banner = _banner.GetHtml(id);
+            if (banner != null)
+                return Request.CreateResponse(HttpStatusCode.OK, banner);
+            return Request.CreateErrorResponse(HttpStatusCode.NotFound, "Banner not found for id.");
+        }
         public HttpResponseMessage GetAll()
         {
             var banners = _banner.GetAll();
             if (banners.Any())
                 return Request.CreateResponse(HttpStatusCode.OK, banners);
-            return Request.CreateErrorResponse(HttpStatusCode.NotFound, "No students found.");
+            return Request.CreateErrorResponse(HttpStatusCode.NotFound, "No banners found.");
         }
 
         public void Post([FromBody]BannerModel banner)

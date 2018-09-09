@@ -12,6 +12,7 @@ namespace BannerFlow.Repository
     public interface IBannerRepository<T> where T : class
     {
         T Get(int i);
+        string GetHtml(int i);
         IQueryable<T> GetAll();
         void Add(T entity);
         void Delete(int id);

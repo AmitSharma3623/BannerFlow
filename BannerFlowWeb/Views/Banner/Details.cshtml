@@ -1,10 +1,10 @@
 ﻿@model BannerFlowWeb.Models.BannerModel
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Details";
 }
 
-<h2>Index</h2>
+<h2>Details</h2>
 
 <div>
     <h4>BannerModel</h4>
@@ -15,7 +15,7 @@
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Html)
+            @Html.Raw(HttpUtility.HtmlDecode(Model.Html))
         </dd>
 
         <dt>

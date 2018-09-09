@@ -25,6 +25,12 @@ namespace BanneFlow.Service
             return _bannerRepository.Get(i);
         }
 
+        public string GetHtml(int id)
+        {
+            return _bannerRepository.GetHtml(id);
+
+        }
+
         public IQueryable<T> GetAll()
         {
             return _bannerRepository.GetAll();

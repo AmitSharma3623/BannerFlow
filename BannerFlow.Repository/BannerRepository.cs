@@ -31,10 +31,27 @@ namespace BannerFlow.Repository
         /// </summary>
         /// <param name="i"></param>
         /// <returns></returns>
-        public T Get(int i)
+        public T Get(int id)
         {
-            return _collection.FindOneById(i);
+            return _collection.FindOneById(id);
 
+        }
+
+        /// <summary>
+        /// Generic Get method to get html record on the basis of id
+        /// </summary>
+        /// <param name="i"></param>
+        /// <returns></returns>
+        public string GetHtml(int id)
+        {
+            var result = _collection.FindOneById(id);
+            return GetPropHtmlValue(result);
+
+        }
+
+        public static string GetPropHtmlValue(object src)
+        {
+            return src.GetType().GetProperty("Html").GetValue(src, null).ToString();
         }
 
         /// <summary>

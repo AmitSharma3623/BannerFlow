@@ -11,6 +11,7 @@ namespace BanneFlow.Service
     {
         void Insert(T student);
         T Get(int i);
+        string GetHtml(int id);
         IQueryable<T> GetAll();
         void Delete(int id);
         void Update(T student);
